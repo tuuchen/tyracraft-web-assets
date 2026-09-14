@@ -1,6 +1,6 @@
 import Play from './Play.js';
 
-const RELEASE = 'https://github.com/tuuchen/tyracraft-web-assets/releases/download/v0.86.140-portal';
+const RELEASE = 'https://raw.githubusercontent.com/tuuchen/tyracraft-web-assets/42c1b715a13f3d971ed9e486e6d13e139466d144/release-assets';
 const ISO_URL = `${RELEASE}/TYRACRAFT-v0.86.140-portal.iso`;
 const WASM_URL = `${RELEASE}/Play.wasm`;
 const SAVE_ROOT = '/vfs/mc0';
