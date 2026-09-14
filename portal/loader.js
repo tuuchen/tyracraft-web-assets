@@ -174,7 +174,21 @@ async function fetchWithProgress(url) {
 async function boot() {
   if (top !== self && !crossOriginIsolated) {
     const player = open(location.href, '_blank', 'noopener');
-    status.textContent = player ? 'The PS2 player opened in a new tab.' : 'Allow the popup to open the PS2 player.';
+    if (player) {
+      status.textContent = 'The PS2 player opened in a new tab.';
+    } else {
+      const field = document.createElement('textarea');
+      field.value = location.href;
+      field.setAttribute('readonly', '');
+      field.style.position = 'fixed'; field.style.opacity = '0';
+      document.body.append(field); field.select();
+      const copied = document.execCommand('copy');
+      field.remove();
+      status.textContent = copied
+        ? 'Bigbools blocks popups here. Direct player link copied — press Ctrl+L, Ctrl+V, Enter.'
+        : `Bigbools blocks popups here. Open the direct player URL: ${location.href}`;
+      startButton.textContent = 'Copy direct player link';
+    }
     return;
   }
   startButton.disabled = true;
