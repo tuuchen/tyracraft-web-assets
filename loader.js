@@ -194,7 +194,7 @@ async function boot() {
     playModule.ccall('initVm', '', [], []);
     progress.value = 0;
     const discBlob = await fetchWithProgress(ISO_URL);
-    if (discBlob.size < 100_000_000) throw new Error(`Game image is truncated (${discBlob.size} bytes).`);
+    if (discBlob.size < 49_000_000) throw new Error(`Game image is truncated (${discBlob.size} bytes).`);
     const disc = new File([discBlob], 'TYRACRAFT.ISO', { type: discBlob.type });
     playModule.discImageDevice = new DiscImageDevice(playModule, disc);
     playModule.bootDiscImage(disc.name);
